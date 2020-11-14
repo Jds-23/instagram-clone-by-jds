@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from "./Components/Layout/Header";
+import Post from "./Components/Post";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
         <Header/>
         <h1>Hello</h1>
 
+        <Post/>
         {/*Header*/}
 
         {/*Posts*/}
