@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Modal,Button,Input} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {auth} from "../firebase";
+import ImageUpload from "./ImageUpload";
 
 function getModalStyle() {
     const top = 50 ;
@@ -71,6 +72,9 @@ const Signup=()=>{
     }
     return(
         <div>
+            {user?.displayName?<ImageUpload username={user.displayName}/>
+                :<h3>Login to Upload</h3>}
+
             <Modal
                 open={open}
                 onClose={()=>setOpen(false)}
