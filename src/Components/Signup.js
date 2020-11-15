@@ -72,8 +72,7 @@ const Signup=()=>{
     }
     return(
         <div>
-            {user?.displayName?<ImageUpload username={user.displayName}/>
-                :<h3>Login to Upload</h3>}
+
 
             <Modal
                 open={open}
@@ -112,13 +111,16 @@ const Signup=()=>{
                     </form>
                 </div>
             </Modal>
-            {user?<Button onClick={()=>auth.signOut()}>SignOut</Button>
-                :<div>
+            <div className="app-header-button">
+            {user?<><Button onClick={()=>auth.signOut()}>SignOut</Button>
+                {user?.displayName?<ImageUpload username={user.displayName}/>
+                    :<h3>Login to Upload</h3>}</>
+                :<>
                     <Button onClick={()=>setOpen(true)}>Sign Up</Button>
                     <Button onClick={()=>setOpenSignIn(true)}>Sign In</Button>
-                </div>
-
+                </>
             }
+            </div>
 
         </div>
     )

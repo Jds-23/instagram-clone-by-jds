@@ -1,0 +1,7 @@
+.image-upload{
+    display: flex;
+    flex-direction: column;
+}
+.image-upload-progress{
+    width: 100%;
+}

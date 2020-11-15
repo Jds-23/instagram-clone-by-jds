@@ -3,7 +3,7 @@ import {Button, Input, Modal} from "@material-ui/core";
 import {db, storage} from "../firebase";
 import firebase from "firebase";
 import {makeStyles} from "@material-ui/core/styles";
-
+import "../ImageUpload.css";
 
 function getModalStyle() {
     const top = 50 ;
@@ -78,18 +78,19 @@ const ImageUpload=({username})=>{
                 onClose={()=>setOpenUpload(false)}
             >
                 <div style={modalStyle} className={classes.paper}>
-
+                    <div className="image-upload">
                     <img
                         className="app-header-image"
                         src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
                         alt="logo"
                     />
-                    <progress value={progress} max="100"/>
+                    <progress value={progress} max="100" className="image-upload-progress"/>
                     <Input type="text" placeholder="Enter a caption.." value={caption} onChange={event => setCaption(event.target.value)}/><br/>
                     <Input type="file" onChange={event => setImage(event.target.files[0])}/><br/>
                     <Button onClick={handleUpload}>
                         Upload
                     </Button>
+                    </div>
                 </div>
             </Modal>
             <Button onClick={()=>setOpenUpload(true)}>Upload</Button>

@@ -8,11 +8,14 @@
   background-color: white;
   padding: 10px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+.app-header-image{
   object-fit: contain;
 }
 .app-header-button{
-  margin-left: auto;
-  width: content-box;
+  display: flex;
 }
 .signup-form{
   display: flex;
