@@ -10,3 +10,11 @@
   border-bottom: 1px solid lightgray;
   object-fit: contain;
 }
+.app-header-button{
+  margin-left: auto;
+  width: content-box;
+}
+.signup-form{
+  display: flex;
+  flex-direction: column;
+}

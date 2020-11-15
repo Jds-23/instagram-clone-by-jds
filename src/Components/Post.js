@@ -10,7 +10,7 @@ const Post=({username, caption,imageUrl})=>{
                 <Avatar
                     className="post-header-avatar"
                     src="1.img"
-                    alt="Jds"
+                    alt={username}
                 />
                 <h5>{username}</h5>
             </div>
