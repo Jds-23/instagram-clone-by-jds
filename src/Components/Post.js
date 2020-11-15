@@ -17,7 +17,7 @@ const Post=({username, caption,imageUrl,postId})=>{
                     .collection("posts")
                     .doc(postId)
                     .collection("comments")
-                    .orderBy('timestamp','desc')
+                    .orderBy('timestamp','asc')
                     .onSnapshot((snapshot => {
                         setComments(snapshot.docs.map((doc)=>doc.data()))
                     }))
