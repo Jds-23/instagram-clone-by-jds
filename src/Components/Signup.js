@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Modal,Button,Input} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {auth} from "../firebase";
 import ImageUpload from "./ImageUpload";
+import {UserContext} from "./Context/UserContext";
 
 function getModalStyle() {
     const top = 50 ;
@@ -18,7 +19,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
     paper: {
         position: 'absolute',
-        width: 400,
+        width: 280,
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
@@ -34,23 +35,24 @@ const Signup=()=>{
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [username,setUsername]=useState("");
-    const [user,setUser]=useState(null);
     const [openSignIn,setOpenSignIn]=useState(false);
+    const {currentUser,setCurrentUser}=useContext(UserContext);
 
     useEffect(()=>{
       const unsubscribe= auth.onAuthStateChanged((authUser)=>{
             if(authUser){
                 console.log(authUser);
-                setUser(authUser);
+                setCurrentUser(authUser);
+
             }else {
-                setUser(null);
+                setCurrentUser(null);
             }
         });
       return  ()=>{
           //perform some clean up action
           unsubscribe();
       }
-    },[user, username]);
+    },[currentUser, username]);
 
     const signUp=(e)=>{
         e.preventDefault();
@@ -80,12 +82,13 @@ const Signup=()=>{
             >
                 <div style={modalStyle} className={classes.paper}>
 
-                    <img
-                        className="app-header-image"
-                        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-                        alt="logo"
-                    />
                     <form className="signup-form" onSubmit={signUp}>
+
+                        <img
+                            className="app-header-image"
+                            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+                            alt="logo"
+                        />
                         <Input type="text" placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)}/><br/>
                         <Input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/><br/>
                         <Input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/><br/>
@@ -99,12 +102,13 @@ const Signup=()=>{
             >
                 <div style={modalStyle} className={classes.paper}>
 
-                    <img
-                        className="app-header-image"
-                        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-                        alt="logo"
-                    />
                     <form className="signup-form" onSubmit={signIn}>
+
+                        <img
+                            className="app-header-image"
+                            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+                            alt="logo"
+                        />
                         <Input type="email" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/><br/>
                         <Input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/><br/>
                         <Button type="submit">Sign Up</Button>
@@ -112,8 +116,8 @@ const Signup=()=>{
                 </div>
             </Modal>
             <div className="app-header-button">
-            {user?<><Button onClick={()=>auth.signOut()}>SignOut</Button>
-                {user?.displayName?<ImageUpload username={user.displayName}/>
+            {currentUser?<><Button onClick={()=>auth.signOut()}>SignOut</Button>
+                {currentUser?.displayName?<ImageUpload username={currentUser.displayName}/>
                     :<h3>Login to Upload</h3>}</>
                 :<>
                     <Button onClick={()=>setOpen(true)}>Sign Up</Button>

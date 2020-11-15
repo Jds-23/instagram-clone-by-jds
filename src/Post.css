@@ -1,5 +1,5 @@
 .post{
-    max-width: 500px;
+    max-width: 600px;
     background-color: white;
     border: 1px solid lightgray;
     margin-bottom: 45px;
@@ -21,4 +21,23 @@
 }
 .post-header-avatar{
     margin-right: 10px;
+}
+.post-comment-box{
+    display: flex;
+    margin-top: 5px;
+    border-top: 1px solid lightgray;
+}
+.post-comment-input{
+    flex: 1;
+    border: none;
+    padding: 20px;
+}
+.post-comment-button{
+    flex: 0;
+    border: none;
+    color: #1ba0f7;
+    background-color: transparent;
+}
+.post-comments{
+    padding: 5px;
 }
