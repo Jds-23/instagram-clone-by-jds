@@ -3,6 +3,7 @@
     background-color: white;
     border: 1px solid lightgray;
     margin-bottom: 45px;
+    border-radius: 3px;
 }
 .post-image{
     width: 100%;
@@ -40,4 +41,18 @@
 }
 .post-comments{
     padding: 5px;
+}
+
+.post-like{
+    font-weight: normal;
+    padding: 5px;
+}
+.post-like-btn-like{
+    border: none;
+    background-color: transparent;
+}
+.post-like-btn-unlike{
+    color: #ed4956;
+    border: none;
+    background-color: transparent;
 }

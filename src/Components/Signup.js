@@ -51,7 +51,7 @@ const Signup=()=>{
       return  ()=>{
           //perform some clean up action
           unsubscribe();
-      }
+      } // eslint-disable-next-line
     },[currentUser, username]);
 
     const signUp=(e)=>{
