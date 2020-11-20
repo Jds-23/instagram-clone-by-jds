@@ -5,3 +5,7 @@
 .image-upload-progress{
     width: 100%;
 }
+.image-upload-image{
+    object-fit: contain;
+    margin-bottom: 5px;
+}

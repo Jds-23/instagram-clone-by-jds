@@ -4,6 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {auth} from "../firebase";
 import ImageUpload from "./ImageUpload";
 import {UserContext} from "./Context/UserContext";
+import "./Signup.css";
 
 function getModalStyle() {
     const top = 50 ;
@@ -63,6 +64,7 @@ const Signup=()=>{
                 });
             })
             .catch((error)=>alert(error.message));
+        setPassword("");setEmail("");setUsername("");
         setOpen(false);
     }
 
@@ -70,6 +72,7 @@ const Signup=()=>{
         e.preventDefault();
         auth.signInWithEmailAndPassword(email,password)
             .catch((error)=>alert(error.message));
+        setPassword("");setEmail("");
         setOpenSignIn(false);
     }
     return(
@@ -85,7 +88,7 @@ const Signup=()=>{
                     <form className="signup-form" onSubmit={signUp}>
 
                         <img
-                            className="app-header-image"
+                            className="header-image"
                             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
                             alt="logo"
                         />
@@ -105,17 +108,17 @@ const Signup=()=>{
                     <form className="signup-form" onSubmit={signIn}>
 
                         <img
-                            className="app-header-image"
+                            className="header-image"
                             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
                             alt="logo"
                         />
                         <Input type="email" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/><br/>
                         <Input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/><br/>
-                        <Button type="submit">Sign Up</Button>
+                        <Button type="submit">Sign In</Button>
                     </form>
                 </div>
             </Modal>
-            <div className="app-header-button">
+            <div className="signup-button-group">
             {currentUser?<><Button onClick={()=>auth.signOut()}>SignOut</Button>
                 {currentUser?.displayName?<ImageUpload username={currentUser.displayName}/>
                     :<h3>Login to Upload</h3>}</>

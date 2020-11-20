@@ -80,7 +80,7 @@ const ImageUpload=({username})=>{
                 <div style={modalStyle} className={classes.paper}>
                     <div className="image-upload">
                     <img
-                        className="app-header-image"
+                        className="image-upload-image"
                         src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
                         alt="logo"
                     />

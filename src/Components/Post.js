@@ -116,14 +116,12 @@ const postUnlike=()=>{
             />
             {/*Image*/}
             {
-                (likes.indexOf(currentUser.displayName)+1)
+                currentUser?((likes.indexOf(currentUser?.displayName)+1)
                     ?<button onClick={postUnlike}className="post-like-btn-unlike"><FavoriteIcon/></button>
-                    :
-                    <button onClick={postLike} className="post-like-btn-like"><FavoriteBorderIcon/></button>
+                    :<button onClick={postLike} className="post-like-btn-like"><FavoriteBorderIcon/></button>)
+                    :<button onClick={postLike} className="post-like-btn-like"><FavoriteBorderIcon/></button>
 
-            }{
-                console.log(caption+likes.indexOf(currentUser.displayName))
-        }
+            }
             <h4 className="post-text"><strong>{username}</strong> {caption}</h4>
             {likes.length
                 ?<h5 className="post-like"><>Liked by <strong>{likes[0]}</strong> </>

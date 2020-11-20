@@ -1,0 +1,7 @@
+.signup-button-group{
+    display: flex;
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+}

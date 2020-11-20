@@ -4,30 +4,7 @@
 .app{
   background-color: #fafafa;
 }
-.app-header{
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: white;
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-  display: flex;
-  justify-content: space-between;
-}
-.app-header-image{
-  object-fit: contain;
-}
-.app-header-button{
-  display: flex;
-}
-.signup-form{
-  display: flex;
-  flex-direction: column;
-}
-.upload-form{
-  display: flex;
-  flex-direction: column;
-}
+
 .app-posts{
   padding: 5px;
   display: flex;
