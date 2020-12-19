@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {Modal,Button,Input} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {auth} from "../firebase";
@@ -37,23 +37,8 @@ const Signup=()=>{
     const [password,setPassword]=useState("");
     const [username,setUsername]=useState("");
     const [openSignIn,setOpenSignIn]=useState(false);
-    const {currentUser,setCurrentUser}=useContext(UserContext);
+    const {currentUser}=useContext(UserContext);
 
-    useEffect(()=>{
-      const unsubscribe= auth.onAuthStateChanged((authUser)=>{
-            if(authUser){
-                console.log(authUser);
-                setCurrentUser(authUser);
-
-            }else {
-                setCurrentUser(null);
-            }
-        });
-      return  ()=>{
-          //perform some clean up action
-          unsubscribe();
-      } // eslint-disable-next-line
-    },[currentUser, username]);
 
     const signUp=(e)=>{
         e.preventDefault();
@@ -121,7 +106,7 @@ const Signup=()=>{
             <div className="signup-button-group">
             {currentUser?<><Button onClick={()=>auth.signOut()}>SignOut</Button>
                 {currentUser?.displayName?<ImageUpload username={currentUser.displayName}/>
-                    :<h3>Login to Upload</h3>}</>
+                    :<h3>Refresh to Upload</h3>}</>
                 :<>
                     <Button onClick={()=>setOpen(true)}>Sign Up</Button>
                     <Button onClick={()=>setOpenSignIn(true)}>Sign In</Button>

@@ -32,7 +32,8 @@ const ImageUpload=({username})=>{
     const classes=useStyles();
     const [modalStyle]=React.useState(getModalStyle);
     const [caption,setCaption]=useState('');
-    const [image,setImage]=useState(null);
+    const [image,setImage]=useState(undefined);
+    const [video,setVideo]=useState(undefined);
     const [progress,setProgress]=useState(0);
     const [openUpload,setOpenUpload]=useState(false);
 
@@ -64,13 +65,12 @@ const ImageUpload=({username})=>{
                         });
                         setProgress(0);
                         setCaption('');
-                        setImage(null);
+                        setImage(undefined);
                         setOpenUpload(false);
                     })
             }
         );
     }
-
     return(
         <div>
             <Modal
@@ -86,7 +86,21 @@ const ImageUpload=({username})=>{
                     />
                     <progress value={progress} max="100" className="image-upload-progress"/>
                     <Input type="text" placeholder="Enter a caption.." value={caption} onChange={event => setCaption(event.target.value)}/><br/>
-                    <Input type="file" onChange={event => setImage(event.target.files[0])}/><br/>
+                    <Input type="file"  onChange={event => {
+                        if((event.target.files[0].type).toString()==="image/jpeg"||(event.target.files[0].type).toString()==="image/png") {
+                            setVideo(undefined);
+                            setImage(event.target.files[0])
+                            }
+                        if ((event.target.files[0].type).toString()==="video/mp4"){
+                            setImage(undefined);
+                            setVideo(event.target.files[0])
+                        }
+                        else {
+                            alert(event.target.files[0].type+" files not supported ")
+                            setImage(undefined);
+                            setVideo(undefined);
+                        }
+                    }}/><br/>
                     <Button onClick={handleUpload}>
                         Upload
                     </Button>

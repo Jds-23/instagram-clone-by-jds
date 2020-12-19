@@ -28,7 +28,6 @@ const Post=({username, caption,imageUrl,postId})=>{
                             comment:doc.data()})))
                     }))
             }
-
             return()=>{
                 unsubscribe();
             }
