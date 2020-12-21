@@ -1,3 +1,20 @@
+This project is live Go check out: [Instagram clone](https://instagram-by-jds.web.app/)
+
+Features-
+
+User Authentication
+
+Upload Post with Captions
+
+Like other user posts
+
+Comment other user posts
+
+Packages used-
+Material UI
+Material UI Icons
+Firebase
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
